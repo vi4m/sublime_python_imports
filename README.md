@@ -1,4 +1,4 @@
-sublime_python_imports
+python_imports_sorter
 ======================
 
 Sublime Text 2 plugin for organizing imports in your Python source code. 
