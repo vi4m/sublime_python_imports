@@ -1,7 +1,7 @@
 sublime_python_imports
 ======================
 
-Sublime Text 2 plugin for organize imports in your Python source code. 
+Sublime Text 2 plugin for organizing imports in your Python source code. 
 Rules are described by Guido here: http://www.python.org/dev/peps/pep-0008/#imports
 
 
