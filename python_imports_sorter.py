@@ -24,7 +24,7 @@ class SortImportsCommand(sublime_plugin.TextCommand):
             edit = self.view.begin_edit()
             o = Organizer(self.view, delimiter)
             new_content = o.reorganize()
-            self.view.replace(edit, self.view.sel()[0], new_content)
+            self.view.replace(edit, self.view.full_line(self.view.sel()[0]), new_content)
             self.view.end_edit(edit)
             sublime.status_message('Imports have been formatted.')
         except Exception as e:
@@ -89,7 +89,7 @@ class Organizer(object):
         self.insert_counter += 1
 
     def reorganize(self):
-        contents = self.view.substr(self.view.sel()[0])
+        contents = self.view.substr(self.view.full_line(self.view.sel()[0]))
         self.filtered = []
         self.contents = contents.splitlines()
         self.first_import_line = 0
@@ -147,8 +147,6 @@ class Organizer(object):
         if self.proj_libs:
             self.append_libs(self.proj_libs)
 
-        self.filtered.insert(
-            self.insert_counter + self.first_import_line - 1, '')
         self.filtered.insert(
             self.insert_counter + self.first_import_line - 1, '')
         return "\n".join(self.filtered)
