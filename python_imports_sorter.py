@@ -1,8 +1,11 @@
 #!/usr/bin/python
 
-# Sublime plugin: python_imports_sorter
-# Author: marcin.kliks@gmail.com
-# License: MIT
+""" Sublime plugin: python_imports_sorter
+Author: marcin.kliks@gmail.com
+License: MIT
+Version 0.1 
+https://github.com/vi4m/sublime_python_imports
+"""
 
 import sublime_plugin
 import sublime
