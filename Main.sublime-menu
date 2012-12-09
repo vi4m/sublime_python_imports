@@ -25,12 +25,12 @@
 						[
 							{
 								"command": "open_file",
-								"args": {"file": "${packages}/Python Imports Sorter/python_imports_sorter.sublime-settings"},
+								"args": {"file": "${packages}/Python Imports Sorter/Default.sublime-settings"},
 								"caption": "Settings – Default"
 							},
 							{
 								"command": "open_file",
-								"args": {"file": "${packages}/User/python_imports_sorter.sublime-settings"},
+								"args": {"file": "${packages}/User/Default.sublime-settings"},
 								"caption": "Settings – User"
 							},
 							{ "caption": "-" },
