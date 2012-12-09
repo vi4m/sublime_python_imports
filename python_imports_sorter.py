@@ -9,7 +9,6 @@ https://github.com/vi4m/sublime_python_imports
 
 import sublime_plugin
 import sublime
-import sublime.Settings
 
 from organizer import Organizer
 
