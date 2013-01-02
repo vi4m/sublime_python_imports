@@ -3,21 +3,23 @@
 """ Sublime plugin: python_imports_sorter
 Author: marcin.kliks@gmail.com
 License: MIT
-Version 0.1
+Version 0.2
 https://github.com/vi4m/sublime_python_imports
 """
 
-import sublime_plugin
-import sublime
+import traceback
 
 from organizer import Organizer
+import sublime
+import sublime_plugin
 
 
 class SortImportsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         try:
-            project_modules = sublime.Settings.get('project_modules', [])
-            sublime.status_message('Formatting imports...')
+            settings = sublime.load_settings("python_imports_sorter.sublime-settings")
+            project_modules = settings.get('project_modules', [])
+            sublime.status_message(('Formatting imports...'))
             line_endings = self.view.line_endings()
             if line_endings == 'windows':
                 delimiter = '\r\n'
@@ -33,7 +35,7 @@ class SortImportsCommand(sublime_plugin.TextCommand):
             new_content = o.reorganize()
             self.view.replace(edit, self.view.full_line(self.view.sel()[0]), new_content)
             self.view.end_edit(edit)
-            sublime.status_message('Imports have been formatted.')
-        except Exception as e:
-            sublime.error_message(e)
-
+            sublime.status_message(('Imports have been formatted.'))
+        except Exception:
+            sublime.error_message((traceback.format_exc()))
+            raise
