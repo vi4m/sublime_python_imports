@@ -19,7 +19,7 @@ class SortImportsCommand(sublime_plugin.TextCommand):
         try:
             settings = sublime.load_settings("python_imports_sorter.sublime-settings")
             project_modules = settings.get('project_modules', [])
-            sublime.status_message(('Formatting imports...'))
+            sublime.status_message('Formatting imports...')
             line_endings = self.view.line_endings()
             if line_endings == 'windows':
                 delimiter = '\r\n'
@@ -35,7 +35,7 @@ class SortImportsCommand(sublime_plugin.TextCommand):
             new_content = o.reorganize()
             self.view.replace(edit, self.view.full_line(self.view.sel()[0]), new_content)
             self.view.end_edit(edit)
-            sublime.status_message(('Imports have been formatted.'))
+            sublime.status_message('Imports have been formatted.')
         except Exception:
-            sublime.error_message((traceback.format_exc()))
+            sublime.error_message(traceback.format_exc())
             raise
