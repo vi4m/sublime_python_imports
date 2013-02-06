@@ -9,11 +9,17 @@ https://github.com/vi4m/sublime_python_imports
 
 import traceback
 
-from .organizer import Organizer
+try:
+    from organizer import Organizer
+    # st2
+except ImportError:
+    # st3
+    from .organizer import Organizer
+
 from io import StringIO
 from tokenize import INDENT, ERRORTOKEN, OP, NUMBER
 from tokenize import generate_tokens
-import tokenize                                                                                                
+import tokenize
 
 import sublime
 import sublime_plugin
@@ -21,9 +27,9 @@ import sublime_plugin
 
 class SplitPythonArgumentsCommand(sublime_plugin.TextCommand):
     """Split long function arguments list into the new lines.
-    E.g: 
+    E.g:
 
-    func(5, x=1, y=2) 
+    func(5, x=1, y=2)
 
     to the form of:
 
@@ -42,9 +48,9 @@ class SplitPythonArgumentsCommand(sublime_plugin.TextCommand):
             full += self.handle_token(x)
 
         self.view.replace(edit, r=self.view.full_line(self.view.sel()[0]), text=full)
-        
+
     def handle_token(self, token):
-        toknum, tokval, _, _, _ = token 
+        toknum, tokval, _, _, _ = token
         if self.previous[0] not in(
             0, INDENT
         ) and toknum not in(
@@ -53,7 +59,7 @@ class SplitPythonArgumentsCommand(sublime_plugin.TextCommand):
             tokval
         ) not in '[]():' and str(
             self.previous[1]
-        ) not in '[(': 
+        ) not in '[(':
             spacing = ' '
         else:
             spacing = ''
@@ -72,9 +78,9 @@ class SplitPythonArgumentsCommand(sublime_plugin.TextCommand):
             self.level += len(tokval) // 4
             return tokval
         tokval = spacing + tokval
-        return tokval 
+        return tokval
 
-            
+
 class SortImportsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         try:
