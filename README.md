@@ -1,7 +1,7 @@
 python_imports_sorter
 ======================
 
-Sublime Text 2 plugin for organizing imports in your Python source code. 
+Sublime Text 2/3 plugin for organizing imports in your Python source code. 
 Rules are described by Guido here: http://www.python.org/dev/peps/pep-0008/#imports
 
 
