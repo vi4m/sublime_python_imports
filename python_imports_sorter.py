@@ -24,6 +24,7 @@ import tokenize
 import sublime
 import sublime_plugin
 
+st3 = sublime.version().startswith('3')
 
 class SplitPythonArgumentsCommand(sublime_plugin.TextCommand):
     """Split long function arguments list into the new lines.
@@ -102,7 +103,10 @@ class SortImportsCommand(sublime_plugin.TextCommand):
             contents = self.view.substr(self.view.full_line(self.view.sel()[0]))
             o = Organizer(contents, delimiter, project_modules)
             new_content = o.reorganize()
-            self.view.replace(edit, r=self.view.full_line(self.view.sel()[0]), text=new_content)
+            if st3:
+                self.view.replace(edit, r=self.view.full_line(self.view.sel()[0]), text=new_content)
+            else:
+                self.view.replace(edit, self.view.full_line(self.view.sel()[0]), new_content)
             sublime.status_message('Imports have been formatted.')
         except Exception:
             sublime.error_message(traceback.format_exc())
