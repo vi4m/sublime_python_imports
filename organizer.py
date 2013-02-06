@@ -3,7 +3,7 @@
 """ Sublime plugin: python_imports_sorter
 Author: marcin.kliks@gmail.com
 License: MIT
-Version 0.1
+Version 0.4
 https://github.com/vi4m/sublime_python_imports
 """
 
