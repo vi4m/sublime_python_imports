@@ -3,7 +3,7 @@
 """ Sublime plugin: python_imports_sorter
 Author: marcin.kliks@gmail.com
 License: MIT
-Version 0.4
+Version 0.5
 https://github.com/vi4m/sublime_python_imports
 """
 
@@ -16,7 +16,6 @@ except ImportError:
     # st3
     from .organizer import Organizer
 
-from io import StringIO
 from tokenize import INDENT, ERRORTOKEN, OP, NUMBER
 from tokenize import generate_tokens
 import tokenize
@@ -40,6 +39,11 @@ class SplitPythonArgumentsCommand(sublime_plugin.TextCommand):
         y=2
     )"""
     def run(self, edit):
+        # st2 doesn't contains this module
+        try:
+            from io import StringIO
+        except ImportError:
+            sublime.status_message('You must upgrade to ST3 to use this future.')
         self.level = 0
         self.inside_call = 0
         self.previous = (0, 0)
