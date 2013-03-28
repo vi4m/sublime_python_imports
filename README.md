@@ -33,6 +33,31 @@ Output
   import project.module1
 ```
 
+
+Spliting arguments
+=================
+You can split long-line python keyword arguments into the new lines using additional 
+command: split arguments. *This feature is available only for ST3+*
+
+Example:
+
+```
+dict(very_long_variable_name=1, even_longer_variable_name=2, additional_param=3)
+```
+
+to the form of :
+```
+
+dict(
+    very_long_variable_name=1, 
+    even_longer_variable_name=2, 
+    additional_param=3
+)
+```
+
+Just use command pallete pressing `Super+Shift+P` and chose `split arguments` 
+action
+
 Installation
 ============
 
