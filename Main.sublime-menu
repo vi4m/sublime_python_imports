@@ -3,8 +3,11 @@
 	"id": "tools",
 	"children":
 	[
-	    {"id": "sort_imports_selection"},
-	    { "command": "sort_imports" }
+		{
+			"caption": "Python Sort Imports",
+			"id": "sort_imports_selection",
+			"command": "sort_imports" 
+		}
 	]
 },
 {
